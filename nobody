@@ -1,0 +1,7 @@
+# nfs4 사용시 nobody nobody 로 나오는 경우 해결방법
+# /etc/idmapd.conf 'defaultv4iddomain.com' 구문 추가
+echo "Domain = defaultv4iddomain.com" | sudo tee -a /etc/idmapd.conf
+
+# 해당 NAS umount 및 NFS ID 재실행
+umount /nas
+sudo systemctl restart nfs-idmapd
